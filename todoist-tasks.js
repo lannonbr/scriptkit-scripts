@@ -2,6 +2,7 @@
 // Description: View this week's tasks from Todoist
 // Author: Benjamin Lannon
 // Twitter: @lannonbr
+// Shortcut: opt t
 
 /** @type typeof import('todoist') */
 const todoistPackage = await npm("todoist");
