@@ -24,7 +24,7 @@ items = items.filter((item) => {
 
   return dueDate.diff(dayjs(), "day") <= 7;
 }).sort((a, b) => {
-	return dayjs(a.due.date).diff(dayjs(b.due.date));
+  return dayjs(a.due.date).diff(dayjs(b.due.date));
 });
 
 await arg(
