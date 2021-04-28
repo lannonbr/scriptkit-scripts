@@ -23,6 +23,8 @@ items = items.filter((item) => {
   let dueDate = dayjs(item.due.date);
 
   return dueDate.diff(dayjs(), "day") <= 7;
+}).sort((a, b) => {
+	return dayjs(a.due.date).diff(dayjs(b.due.date));
 });
 
 await arg(
