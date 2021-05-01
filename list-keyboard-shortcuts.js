@@ -4,22 +4,16 @@
 // Author: Benjamin Lannon
 // Twitter: @lannonbr
 
-let scripts = await readdir(path.join(kenvPath(), "scripts"));
-
-scripts = scripts.filter((script) => script.endsWith(".js"));
+let scriptMetadata = JSON.parse(
+  (await readFile(path.join(kenvPath(), "cache", "menu-cache.json"))).toString()
+);
 
 let opts = [];
 
-for (let script of scripts) {
-  let file = (
-    await readFile(path.join(kenvPath(), "scripts", script))
-  ).toString();
-  let shortcutLine = file
-    .split("\n")
-    .find((line) => line.startsWith("// Shortcut:"));
-  if (shortcutLine) {
+for (let script of scriptMetadata) {
+  if (script.shortcut) {
     opts.push({
-      name: `${script}: ${shortcutLine.split("// Shortcut: ")[1]}`,
+      name: `${script.value}: ${script.shortcut}`,
     });
   }
 }
