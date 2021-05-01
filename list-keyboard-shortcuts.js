@@ -4,9 +4,8 @@
 // Author: Benjamin Lannon
 // Twitter: @lannonbr
 
-let scriptMetadata = JSON.parse(
-  (await readFile(path.join(kenvPath(), "cache", "menu-cache.json"))).toString()
-);
+let { menu } = await cli("fns");
+let scriptMetadata = await menu();
 
 let opts = [];
 
