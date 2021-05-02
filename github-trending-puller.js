@@ -1,5 +1,5 @@
 // Description: Pulls down trending repos from github and save to database
-// Schedule: 0 * * * *
+// Schedule: 0 */4 * * *
 // Exclude: true
 
 /** @type typeof import('playwright') */
