@@ -13,7 +13,7 @@ for (const lang of langs) {
   dbDefaults[lang] = [];
 }
 
-const trendingDB = db("github-trending", dbDefaults);
+const trendingDB = await db("github-trending", dbDefaults);
 
 const browser = await playwright.chromium.launch();
 
@@ -52,6 +52,7 @@ for (const lang of langs) {
     return results;
   });
 
-  trendingDB.set(lang, repos).write();
+  trendingDB[lang] = repos;
+  await trendingDB.write();
 }
 await browser.close();
