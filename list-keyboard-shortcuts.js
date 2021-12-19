@@ -4,21 +4,16 @@
 // Author: Benjamin Lannon
 // Twitter: @lannonbr
 
-let { buildMenu } = await cli("fns");
-let scriptMetadata = await buildMenu();
-
-console.log(scriptMetadata)
+let scripts = await getScripts();
 
 let opts = [];
 
-for (let script of scriptMetadata) {
+for (let script of scripts) {
   if (script.shortcut) {
     opts.push({
       name: `${script.command}: ${script.shortcut}`,
     });
   }
 }
-
-console.log(opts)
 
 await arg("Current shortcuts", opts);
